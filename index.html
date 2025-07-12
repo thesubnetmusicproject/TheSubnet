@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Subnet Music Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Montserrat:400,700" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a0033 0%, #2d0066 70%, #f500b8 100%);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: rgba(20, 0, 60, 0.85);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.45);
+            padding: 2.5rem 2rem 2rem 2rem;
+            max-width: 360px;
+            width: 100%;
+            border: 2px solid #ff39a7;
+            text-align: center;
+        }
+        h1 {
+            font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 22px;
+            color: #ffe761;
+            text-shadow: 0 0 12px #ff39a7, 0 0 36px #00fff0;
+        }
+        label {
+            display: block;
+            margin: 20px 0 6px 0;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #ff39a7;
+            letter-spacing: 1px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 0.75em;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background: #2d0066;
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            box-shadow: 0 2px 8px 0 rgba(255,57,167,0.15);
+            margin-bottom: 10px;
+            transition: box-shadow 0.2s;
+        }
+        input[type="text"]:focus {
+            box-shadow: 0 0 16px 2px #00fff0, 0 2px 8px 0 rgba(255,57,167,0.22);
+        }
+        @media (max-width: 480px) {
+            .container {
+                max-width: 95vw;
+                padding: 1.3rem;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Subnet Music Project</h1>
+        <form>
+            <label for="artist">Artist Name</label>
+            <input type="text" id="artist" name="artist" placeholder="Enter artist name">
+            <label for="track">Track Title</label>
+            <input type="text" id="track" name="track" placeholder="Enter track title">
+        </form>
+    </div>
+</body>
+</html>
