@@ -2,85 +2,211 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>The Subnet Music Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Montserrat:400,700" rel="stylesheet">
+    <title>The Subnet</title>
     <style>
+        /* Synthwave Color Palette */
+        :root {
+            --synth-dark: #1a0f2b; /* Deep purple/black */
+            --synth-medium: #2d1e4c; /* Slightly lighter purple */
+            --synth-accent-pink: #ff00ff; /* Bright neon pink */
+            --synth-accent-blue: #00ffff; /* Bright neon cyan */
+            --synth-text-light: #e0e0e0; /* Light grey for general text */
+            --synth-border-glow: rgba(255, 0, 255, 0.5); /* Pink glow */
+            --synth-shadow-glow: rgba(0, 255, 255, 0.3); /* Cyan shadow glow */
+        }
+
+        /* Basic styling for the body */
         body {
-            min-height: 100vh;
+            font-family: 'Inter', sans-serif; /* Keeping Inter, but could be changed for a more retro font */
             margin: 0;
-            font-family: 'Montserrat', Arial, sans-serif;
-            background: linear-gradient(135deg, #1a0033 0%, #2d0066 70%, #f500b8 100%);
-            color: #fff;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--synth-dark) 0%, #0a0513 100%); /* Dark gradient background */
+            color: var(--synth-text-light);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            text-shadow: 0 0 5px var(--synth-shadow-glow); /* Subtle text glow */
         }
-        .container {
-            background: rgba(20, 0, 60, 0.85);
-            border-radius: 18px;
-            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.45);
-            padding: 2.5rem 2rem 2rem 2rem;
-            max-width: 360px;
-            width: 100%;
-            border: 2px solid #ff39a7;
-            text-align: center;
-        }
+
+        /* Styling for the main title */
         h1 {
-            font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
-            font-size: 2.2rem;
-            letter-spacing: 3px;
-            margin-bottom: 22px;
-            color: #ffe761;
-            text-shadow: 0 0 12px #ff39a7, 0 0 36px #00fff0;
+            color: var(--synth-accent-pink); /* Neon pink title */
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 3.5em; /* Larger, more impactful title */
+            font-weight: 800; /* Extra bold */
+            text-shadow: 0 0 15px var(--synth-accent-pink), 0 0 25px var(--synth-accent-pink), 0 0 35px var(--synth-accent-blue); /* Strong neon glow */
+            letter-spacing: 0.1em; /* Wider letter spacing */
+            animation: pulse 2s infinite alternate; /* Gentle pulsing animation */
         }
-        label {
-            display: block;
-            margin: 20px 0 6px 0;
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.02); }
+        }
+
+        /* Styling for the table container to center it */
+        .table-container {
+            width: 90%;
+            max-width: 1000px;
+            margin-bottom: 30px;
+            background-color: var(--synth-medium); /* Darker purple for container */
+            border-radius: 15px; /* More rounded corners */
+            overflow: hidden;
+            box-shadow: 0 0 20px var(--synth-border-glow), 0 0 30px var(--synth-shadow-glow); /* Glowing box shadow */
+            border: 2px solid var(--synth-accent-blue); /* Cyan border */
+        }
+
+        /* Styling for the table itself */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        /* Styling for table headers */
+        th {
+            background: linear-gradient(90deg, var(--synth-accent-pink) 0%, var(--synth-accent-blue) 100%); /* Gradient header */
+            color: var(--synth-dark); /* Dark text on bright header */
+            padding: 18px; /* More padding */
             text-align: left;
             font-weight: 700;
-            font-size: 1rem;
-            color: #ff39a7;
-            letter-spacing: 1px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em; /* More letter spacing */
+            text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Shadow for header text */
         }
-        input[type="text"] {
-            width: 100%;
-            padding: 0.75em;
-            border-radius: 8px;
-            border: none;
-            outline: none;
-            background: #2d0066;
-            color: #fff;
-            font-size: 1rem;
-            font-family: 'Montserrat', Arial, sans-serif;
-            box-shadow: 0 2px 8px 0 rgba(255,57,167,0.15);
-            margin-bottom: 10px;
-            transition: box-shadow 0.2s;
+
+        /* Styling for table cells */
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+            word-break: break-all;
+            color: var(--synth-text-light);
         }
-        input[type="text"]:focus {
-            box-shadow: 0 0 16px 2px #00fff0, 0 2px 8px 0 rgba(255,57,167,0.22);
+
+        /* Alternating row colors */
+        tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.1); /* Very dark transparent for even rows */
         }
-        @media (max-width: 480px) {
-            .container {
-                max-width: 95vw;
-                padding: 1.3rem;
-            }
+
+        /* Hover effect for table rows */
+        tr:hover {
+            background-color: rgba(255, 0, 255, 0.1); /* Pink transparent on hover */
+            cursor: pointer;
+            text-shadow: 0 0 8px var(--synth-accent-blue); /* Cyan glow on hover */
+        }
+
+        /* Styling for the description text field */
+        .description-field {
+            width: 90%;
+            max-width: 1000px;
+            padding: 30px; /* More padding */
+            background-color: var(--synth-medium);
+            border: 2px solid var(--synth-accent-pink); /* Pink border */
+            box-shadow: 0 0 20px var(--synth-border-glow), 0 0 30px var(--synth-shadow-glow); /* Consistent glow */
+            border-radius: 15px;
+            line-height: 1.8;
+            font-size: 1.15em; /* Slightly larger font */
+            color: var(--synth-text-light);
+            text-align: justify;
+            text-shadow: 0 0 5px var(--synth-shadow-glow); /* Subtle text glow */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
             h1 {
-                font-size: 1.2rem;
+                font-size: 2.8em;
+            }
+            .table-container, .description-field {
+                width: 95%;
+                padding: 15px;
+            }
+            th, td {
+                padding: 12px;
+                font-size: 0.9em;
+            }
+            .description-field {
+                font-size: 1.05em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2em;
+                letter-spacing: 0.05em;
+            }
+            th, td {
+                padding: 10px;
+                font-size: 0.85em;
+            }
+            .description-field {
+                font-size: 1em;
+                padding: 20px;
             }
         }
     </style>
+    <!-- Google Fonts - Inter (for a modern look) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>The Subnet Music Project</h1>
-        <form>
-            <label for="artist">Artist Name</label>
-            <input type="text" id="artist" name="artist" placeholder="Enter artist name">
-            <label for="track">Track Title</label>
-            <input type="text" id="track" name="track" placeholder="Enter track title">
-        </form>
+
+    <h1>The Subnet</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Artist</th>
+                    <th>Track</th>
+                    <th>SHA256 Hash</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Data - You can add more rows here -->
+                <tr>
+                    <td>Daft Punk</td>
+                    <td>Around The World</td>
+                    <td>a1b2c3d4e5f678901234567890abcdef1234567890abcdef1234567890abcdef</td>
+                </tr>
+                <tr>
+                    <td>Gorillaz</td>
+                    <td>Feel Good Inc.</td>
+                    <td>f6e5d4c3b2a10987654321fedcba987654321fedcba987654321fedcba9876</td>
+                </tr>
+                <tr>
+                    <td>Massive Attack</td>
+                    <td>Teardrop</td>
+                    <td>0987654321abcdef0123456789abcdef0123456789abcdef0123456789abcdef</td>
+                </tr>
+                <tr>
+                    <td>Aphex Twin</td>
+                    <td>Windowlicker</td>
+                    <td>abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789</td>
+                </tr>
+                <tr>
+                    <td>Portishead</td>
+                    <td>Glory Box</td>
+                    <td>9876543210fedcba9876543210fedcba9876543210fedcba9876543210fedcba</td>
+                </tr>
+                <tr>
+                    <td>Kavinsky</td>
+                    <td>Nightcall</td>
+                    <td>7a8b9c0d1e2f3g4h5i6j7k8l9m0n1o2p3q4r5s6t7u8v9w0x1y2z3a4b5c6d7e8f</td>
+                </tr>
+                <tr>
+                    <td>Carpenter Brut</td>
+                    <td>Turbo Killer</td>
+                    <td>b8a7c6d5e4f3g2h1i0j9k8l7m6n5o4p3q2r1s0t9u8v7w6x5y4z3a2b1c0d9e8f7</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
+    <div class="description-field">
+        <p>Welcome to The Subnet, your dedicated platform for exploring and verifying music tracks. This site provides a centralized repository of artist and track information, paired with their unique SHA256 hashes. These cryptographic hashes serve as digital fingerprints, ensuring the integrity and authenticity of each track listed. Our goal is to offer a transparent and reliable resource for music enthusiasts, creators, and verifiers alike, fostering trust and security within the digital music landscape. We aim to be a simple yet powerful tool for anyone interested in the provenance and authenticity of digital audio.</p>
+    </div>
+
 </body>
 </html>
