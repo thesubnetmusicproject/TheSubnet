@@ -64,6 +64,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed; /* Added to make column widths behave predictably */
         }
 
         /* Styling for table headers */
@@ -82,8 +83,23 @@
         td {
             padding: 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
-            word-break: break-all;
             color: var(--synth-text-light);
+            vertical-align: top; /* Align text to top in case of wrapping */
+        }
+
+        /* Specific styling for the first two columns (Artist, Track) */
+        td:nth-child(1),
+        td:nth-child(2) {
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden;    /* Hide overflowing content */
+            text-overflow: ellipsis; /* Show ellipsis for truncated text */
+        }
+
+        /* Specific styling for the third column (SHA256 Hash) */
+        td:nth-child(3) {
+            word-break: break-all; /* Break long words (hashes) */
+            cursor: copy; /* Indicate that it's clickable and copies */
+            position: relative; /* For the copy confirmation message */
         }
 
         /* Alternating row colors */
@@ -112,6 +128,27 @@
             color: var(--synth-text-light);
             text-align: justify;
             text-shadow: 0 0 5px var(--synth-shadow-glow); /* Subtle text glow */
+        }
+
+        /* Copy confirmation message style */
+        .copy-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--synth-accent-blue);
+            color: var(--synth-dark);
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px var(--synth-accent-blue);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            font-weight: bold;
+        }
+
+        .copy-message.show {
+            opacity: 1;
         }
 
         /* Responsive adjustments */
@@ -168,42 +205,42 @@
                 <tr>
                     <td>Syntax</td>
                     <td>Compiling...</td>
-                    <td>Compiling...</td>
+                    <td onclick="copyToClipboard(this)">Compiling...</td>
                 </tr>
                 <tr>
                     <td>Loading...</td>
                     <td>Compiling...</td>
-                    <td>Compiling...</td>
+                    <td onclick="copyToClipboard(this)">Compiling...</td>
                 </tr>
                 <tr>
-                    <td>DJ Jackalope </td>
+                    <td>DJ Jackalope</td>
                     <td>Compiling...</td>
-                    <td>Compiling...</td>
+                    <td onclick="copyToClipboard(this)">Compiling...</td>
                 </tr>
                 <tr>
                     <td>Kampf</td>
                     <td>Lecture</td>
-                    <td>7029DD345858AF98ADCF11D5AD47DE65F0DBD7C05CBCCDCE39037D3665278B2D</td>
+                    <td onclick="copyToClipboard(this)">7029DD345858AF98ADCF11D5AD47DE65F0DBD7C05CBCCDCE39037D3665278B2D</td>
                 </tr>
                 <tr>
                     <td>1o57</td>
                     <td>Compiling...</td>
-                    <td>Compiling...</td>
+                    <td onclick="copyToClipboard(this)">Compiling...</td>
                 </tr>
                 <tr>
                     <td>Mattrix</td>
                     <td>Compiling...</td>
-                    <td>Compiling...</td>
+                    <td onclick="copyToClipboard(this)">Compiling...</td>
                 </tr>
                 <tr>
                     <td>Dotornot</td>
-                    <td>zero-zero-seven-six-four </td>
-                    <td>70BE410758477FDDD0CE7C862DEEF566734A1CD307A3E109527F59C6864B0FE2</td>
+                    <td>zero-zero-seven-six-four</td>
+                    <td onclick="copyToClipboard(this)">70BE410758477FDDD0CE7C862DEEF566734A1CD307A3E109527F59C6864B0FE2</td>
                 </tr>
                 <tr>
                     <td>Cannibal</td>
                     <td>Compiling...</td>
-                    <td>Compiling...</td>
+                    <td onclick="copyToClipboard(this)">Compiling...</td>
                 </tr>
             </tbody>
         </table>
@@ -216,6 +253,30 @@
         Go to one of the listed artist's sets and search for the wireless access point "The Subnet". When you connect to the access point you should see the physical Subnet Node device blink green, if you connect to an access point called "The Subnet" but don't see the device flashing green you have likely connected to a rogue access point. Hackers gonna hack.<br>
         Once connected to a valid Subnet Node navigate to Http://TheSubnet.local to pull down the available tracks from the playlist. If you are connecting on a mobile device make sure you turn off your cellular data as it may interfere with connecting to the site. (It's always DNS)</p>
     </div>
+
+    <!-- Copy confirmation message -->
+    <div id="copyConfirmation" class="copy-message">
+        Copied to clipboard!
+    </div>
+
+    <script>
+        function copyToClipboard(element) {
+            const textToCopy = element.textContent;
+            const tempInput = document.createElement('textarea');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // Show confirmation message
+            const confirmationMessage = document.getElementById('copyConfirmation');
+            confirmationMessage.classList.add('show');
+            setTimeout(() => {
+                confirmationMessage.classList.remove('show');
+            }, 1500); // Hide after 1.5 seconds
+        }
+    </script>
 
 </body>
 </html>
