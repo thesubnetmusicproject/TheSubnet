@@ -18,131 +18,128 @@
 
         /* Basic styling for the body */
         body {
-            font-family: 'Inter', sans-serif; /* Keeping Inter, but could be changed for a more retro font */
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 20px;
-            background: linear-gradient(135deg, var(--synth-dark) 0%, #0a0513 100%); /* Dark gradient background */
+            background: linear-gradient(135deg, var(--synth-dark) 0%, #0a0513 100%);
             color: var(--synth-text-light);
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
-            text-shadow: 0 0 5px var(--synth-shadow-glow); /* Subtle text glow */
+            text-shadow: 0 0 5px var(--synth-shadow-glow);
         }
 
         /* Styling for the main title */
         h1 {
-            color: var(--synth-accent-pink); /* Neon pink title */
+            color: var(--synth-accent-pink);
             text-align: center;
             margin-bottom: 30px;
-            font-size: 3.5em; /* Larger, more impactful title */
-            font-weight: 800; /* Extra bold */
-            text-shadow: 0 0 15px var(--synth-accent-pink), 0 0 25px var(--synth-accent-pink), 0 0 35px var(--synth-accent-blue); /* Strong neon glow */
-            letter-spacing: 0.1em; /* Wider letter spacing */
-            animation: pulse 2s infinite alternate; /* Gentle pulsing animation */
+            font-size: 3.5em;
+            font-weight: 800;
+            text-shadow:
+                0 0 15px var(--synth-accent-pink),
+                0 0 25px var(--synth-accent-pink),
+                0 0 35px var(--synth-accent-blue);
+            letter-spacing: 0.1em;
+            animation: pulse 2s infinite alternate;
         }
-
         @keyframes pulse {
             from { transform: scale(1); }
-            to { transform: scale(1.02); }
+            to   { transform: scale(1.02); }
         }
 
-        /* Styling for the table container to center it */
+        /* Table container */
         .table-container {
             width: 90%;
             max-width: 1000px;
             margin-bottom: 30px;
-            background-color: var(--synth-medium); /* Darker purple for container */
-            border-radius: 15px; /* More rounded corners */
+            background-color: var(--synth-medium);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 0 20px var(--synth-border-glow), 0 0 30px var(--synth-shadow-glow); /* Glowing box shadow */
-            border: 2px solid var(--synth-accent-blue); /* Cyan border */
+            box-shadow:
+                0 0 20px var(--synth-border-glow),
+                0 0 30px var(--synth-shadow-glow);
+            border: 2px solid var(--synth-accent-blue);
         }
 
-        /* Styling for the table itself */
+        /* Table styling */
         table {
             width: 100%;
             border-collapse: collapse;
-            table-layout: fixed; /* Added to make column widths behave predictably */
+            table-layout: fixed;
         }
-
-        /* Styling for table headers */
         th {
-            background: linear-gradient(90deg, var(--synth-accent-pink) 0%, var(--synth-accent-blue) 100%); /* Gradient header */
-            color: var(--synth-dark); /* Dark text on bright header */
-            padding: 18px; /* More padding */
+            background: linear-gradient(90deg, var(--synth-accent-pink) 0%, var(--synth-accent-blue) 100%);
+            color: var(--synth-dark);
+            padding: 18px;
             text-align: left;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.08em; /* More letter spacing */
-            text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Shadow for header text */
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
         }
-
-        /* Styling for table cells */
         td {
             padding: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--synth-text-light);
-            vertical-align: top; /* Align text to top in case of wrapping */
+            vertical-align: top;
         }
 
-        /* Specific styling for the first two columns (Artist, Track) */
+        /* Truncate artist and track columns */
         td:nth-child(1),
         td:nth-child(2) {
-            white-space: nowrap; /* Prevent text from wrapping */
-            overflow: hidden;    /* Hide overflowing content */
-            text-overflow: ellipsis; /* Show ellipsis for truncated text */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-
-        /* Specific styling for the third column (SHA256 Hash) */
+        /* Hash column */
         td:nth-child(3) {
-            word-break: break-all; /* Break long words (hashes) */
-            cursor: copy; /* Indicate that it's clickable and copies */
-            position: relative; /* For the copy confirmation message */
+            word-break: break-all;
+            cursor: copy;
+            position: relative;
         }
 
-        /* Alternating row colors */
+        /* Alternating rows */
         tr:nth-child(even) {
-            background-color: rgba(0, 0, 0, 0.1); /* Very dark transparent for even rows */
+            background-color: rgba(0, 0, 0, 0.1);
         }
-
-        /* Hover effect for table rows */
         tr:hover {
-            background-color: rgba(255, 0, 255, 0.1); /* Pink transparent on hover */
+            background-color: rgba(255, 0, 255, 0.1);
             cursor: pointer;
-            text-shadow: 0 0 8px var(--synth-accent-blue); /* Cyan glow on hover */
+            text-shadow: 0 0 8px var(--synth-accent-blue);
         }
 
-        /* 1) Define a green pulse keyframe */
+        /* Fade-green highlight animation */
         @keyframes fadeGreen {
             0%   { background-color: transparent; }
             50%  { background-color: rgba(0, 255, 0, 0.3); }
             100% { background-color: transparent; }
         }
-
-        /* 2) .highlight will animate its cells */
         .highlight td {
             animation: fadeGreen 2s infinite;
         }
 
-        /* Styling for the description text field */
+        /* Description field */
         .description-field {
             width: 90%;
             max-width: 1000px;
-            padding: 30px; /* More padding */
+            padding: 30px;
             background-color: var(--synth-medium);
-            border: 2px solid var(--synth-accent-pink); /* Pink border */
-            box-shadow: 0 0 20px var(--synth-border-glow), 0 0 30px var(--synth-shadow-glow); /* Consistent glow */
+            border: 2px solid var(--synth-accent-pink);
+            box-shadow:
+                0 0 20px var(--synth-border-glow),
+                0 0 30px var(--synth-shadow-glow);
             border-radius: 15px;
             line-height: 1.8;
-            font-size: 1.15em; /* Slightly larger font */
+            font-size: 1.15em;
             color: var(--synth-text-light);
             text-align: justify;
-            text-shadow: 0 0 5px var(--synth-shadow-glow); /* Subtle text glow */
+            text-shadow: 0 0 5px var(--synth-shadow-glow);
         }
 
-        /* Copy confirmation message style */
+        /* Copy confirmation */
         .copy-message {
             position: fixed;
             bottom: 20px;
@@ -158,42 +155,21 @@
             transition: opacity 0.3s ease-in-out;
             font-weight: bold;
         }
-
         .copy-message.show {
             opacity: 1;
         }
 
-        /* Responsive adjustments */
+        /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.8em;
-            }
-            .table-container, .description-field {
-                width: 95%;
-                padding: 15px;
-            }
-            th, td {
-                padding: 12px;
-                font-size: 0.9em;
-            }
-            .description-field {
-                font-size: 1.05em;
-            }
+            h1 { font-size: 2.8em; }
+            .table-container, .description-field { width: 95%; padding: 15px; }
+            th, td { padding: 12px; font-size: 0.9em; }
+            .description-field { font-size: 1.05em; }
         }
-
         @media (max-width: 480px) {
-            h1 {
-                font-size: 2.2em;
-                letter-spacing: 0.05em;
-            }
-            th, td {
-                padding: 10px;
-                font-size: 0.85em;
-            }
-            .description-field {
-                font-size: 1em;
-                padding: 20px;
-            }
+            h1 { font-size: 2.2em; letter-spacing: 0.05em; }
+            th, td { padding: 10px; font-size: 0.85em; }
+            .description-field { font-size: 1em; padding: 20px; }
         }
     </style>
     <!-- Google Fonts - Inter -->
@@ -214,7 +190,7 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Example Data - First row highlighted -->
+                <!-- 1. Highlighted row as example -->
                 <tr class="highlight">
                     <td>Syntax</td>
                     <td>Radio Active</td>
@@ -223,6 +199,7 @@
                     </td>
                     <td>Node 1</td>
                 </tr>
+                <!-- 2 -->
                 <tr>
                     <td>0xdade</td>
                     <td>Murdergram Deux Freestyle</td>
@@ -231,6 +208,7 @@
                     </td>
                     <td>Node 2</td>
                 </tr>
+                <!-- 3 -->
                 <tr>
                     <td>cr0ws</td>
                     <td>Trash Panda</td>
@@ -239,6 +217,7 @@
                     </td>
                     <td>Node 3</td>
                 </tr>
+                <!-- 4 -->
                 <tr>
                     <td>Plug</td>
                     <td>The World Goes By</td>
@@ -247,7 +226,114 @@
                     </td>
                     <td>Node 4</td>
                 </tr>
-                <!-- … continue adding <td>Node X</td> for each row … -->
+                <!-- 5 -->
+                <tr>
+                    <td>Miss Jackalope</td>
+                    <td>MissJackalopeArmy_Subnet_Beacon_DC33</td>
+                    <td onclick="copyToClipboard(this)">
+                        73BDA088C89F4DDE21AE3DACA013A2CBE0F6876E1C24714E82177FDD2338BAA4
+                    </td>
+                    <td>Node 5</td>
+                </tr>
+                <!-- 6 -->
+                <tr>
+                    <td>BbartokK</td>
+                    <td>Crab Bananas</td>
+                    <td onclick="copyToClipboard(this)">
+                        0586A0356E14164BA317AF503E8BE8587E58664EC0D3EA9A6B3E6286842FC6B0
+                    </td>
+                    <td>Node 6</td>
+                </tr>
+                <!-- 7 -->
+                <tr>
+                    <td>Terminal Override</td>
+                    <td>Behind The Mesh</td>
+                    <td onclick="copyToClipboard(this)">
+                        B24448F1D4729A42DDE741FCCBC1BC721F771FF8F48C0F3B25C23DF20405A7E7
+                    </td>
+                    <td>Node 7</td>
+                </tr>
+                <!-- 8 -->
+                <tr>
+                    <td>Kampf</td>
+                    <td>Lecture</td>
+                    <td onclick="copyToClipboard(this)">
+                        A5B303F76D1BF4F7DD8CF94424B075BDA37F2874CD77ACA56B2D75E4BEF62D2A
+                    </td>
+                    <td>Node 8</td>
+                </tr>
+                <!-- 9 -->
+                <tr>
+                    <td>1o57</td>
+                    <td>Compiling...</td>
+                    <td onclick="copyToClipboard(this)">
+                        Compiling...
+                    </td>
+                    <td>Node 9</td>
+                </tr>
+                <!-- 10 -->
+                <tr>
+                    <td>Baywolfmusic</td>
+                    <td>Seeking (DefCon is Cancelled edit)</td>
+                    <td onclick="copyToClipboard(this)">
+                        F487F2E7153ED8E46D7517553499B15B04CEFD9B9C8FFC21AF6B7400B37D9C56
+                    </td>
+                    <td>Node 10</td>
+                </tr>
+                <!-- 11 -->
+                <tr>
+                    <td>Mattrix</td>
+                    <td>quickymix</td>
+                    <td onclick="copyToClipboard(this)">
+                        CCAC671276B603F1AA08B8031B35490A568DF65EC0D916656A503CD2767B1ACB
+                    </td>
+                    <td>Node 11</td>
+                </tr>
+                <!-- 12 -->
+                <tr>
+                    <td>Dotornot</td>
+                    <td>zero-zero-seven-six-four</td>
+                    <td onclick="copyToClipboard(this)">
+                        70BE410758477FDDD0CE7C862DEEF566734A1CD307A3E109527F59C6864B0FE2
+                    </td>
+                    <td>Node 12</td>
+                </tr>
+                <!-- 13 -->
+                <tr>
+                    <td>Dutch Angles</td>
+                    <td>Proto</td>
+                    <td onclick="copyToClipboard(this)">
+                        25AFAC16261B6AB15D6F2A4CFA64D568931C8AA309AAE13468840C694F76F450
+                    </td>
+                    <td>Node 13</td>
+                </tr>
+                <!-- 14 -->
+                <tr>
+                    <td>mauvhead</td>
+                    <td>mini-trance</td>
+                    <td onclick="copyToClipboard(this)">
+                        16D7C29148E2B2471ED82B63C32961F741482851DABA9AE564E02399008697B6
+                    </td>
+                    <td>Node 14</td>
+                </tr>
+                <!-- 15 -->
+                <tr>
+                    <td>Pastapocalypse</td>
+                    <td>Quantum Entanglement</td>
+                    <td onclick="copyToClipboard(this)">
+                        2B8BD3E80157C46721DEA7D3F139811CCE5F2E7C27CB0312ED6AE101DA6CA74E
+                    </td>
+                    <td>Node 15</td>
+                </tr>
+                <!-- 16 -->
+                <tr>
+                    <td>Cannibal</td>
+                    <td>Obstreperous</td>
+                    <td onclick="copyToClipboard(this)">
+                        A732DF3EB8C19E0292168A0142D6752D18C4935A0F117F475F715F5549C20970
+                    </td>
+                    <td>Node 16</td>
+                </tr>
             </tbody>
         </table>
     </div>
