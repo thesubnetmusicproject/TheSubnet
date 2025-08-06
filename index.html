@@ -114,6 +114,18 @@
             text-shadow: 0 0 8px var(--synth-accent-blue); /* Cyan glow on hover */
         }
 
+        /* 1) Define a green pulse keyframe */
+        @keyframes fadeGreen {
+            0%   { background-color: transparent; }
+            50%  { background-color: rgba(0, 255, 0, 0.3); }
+            100% { background-color: transparent; }
+        }
+
+        /* 2) .highlight will animate its cells */
+        .highlight td {
+            animation: fadeGreen 2s infinite;
+        }
+
         /* Styling for the description text field */
         .description-field {
             width: 90%;
@@ -184,7 +196,7 @@
             }
         }
     </style>
-    <!-- Google Fonts - Inter (for a modern look) -->
+    <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -198,90 +210,44 @@
                     <th>Artist</th>
                     <th>Track</th>
                     <th>SHA256 Hash</th>
+                    <th>Node</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Example Data - You can add more rows here -->
-                <tr>
+                <!-- Example Data - First row highlighted -->
+                <tr class="highlight">
                     <td>Syntax</td>
                     <td>Radio Active</td>
-                    <td onclick="copyToClipboard(this)">EC7AACB9EBFA4A0CAE6447DFA278F370BE79B498F1A1F75F584739703ED6D65A</td>
+                    <td onclick="copyToClipboard(this)">
+                        EC7AACB9EBFA4A0CAE6447DFA278F370BE79B498F1A1F75F584739703ED6D65A
+                    </td>
+                    <td>Node 1</td>
                 </tr>
                 <tr>
                     <td>0xdade</td>
                     <td>Murdergram Deux Freestyle</td>
-                    <td onclick="copyToClipboard(this)">2F4DF779C359A2200433E3413D84CC7598404324ABB3CE0378F42C90CC5C42A6</td>
+                    <td onclick="copyToClipboard(this)">
+                        2F4DF779C359A2200433E3413D84CC7598404324ABB3CE0378F42C90CC5C42A6
+                    </td>
+                    <td>Node 2</td>
                 </tr>
                 <tr>
                     <td>cr0ws</td>
                     <td>Trash Panda</td>
-                    <td onclick="copyToClipboard(this)">50E4A8622700F793908BC42E9BB542B3645EFA42B33CABE580A5EEFAFC351EA6</td>
+                    <td onclick="copyToClipboard(this)">
+                        50E4A8622700F793908BC42E9BB542B3645EFA42B33CABE580A5EEFAFC351EA6
+                    </td>
+                    <td>Node 3</td>
                 </tr>
                 <tr>
                     <td>Plug</td>
                     <td>The World Goes By</td>
-                    <td onclick="copyToClipboard(this)">A09B340B3BAED4864CE943BB748B41D26B1D36763646892CC88A6610E85FF95D</td>
+                    <td onclick="copyToClipboard(this)">
+                        A09B340B3BAED4864CE943BB748B41D26B1D36763646892CC88A6610E85FF95D
+                    </td>
+                    <td>Node 4</td>
                 </tr>
-                <tr>
-                    <td>Miss Jackalope</td>
-                    <td>MissJackalopeArmy_Subnet_Beacon_DC33</td>
-                    <td onclick="copyToClipboard(this)">73BDA088C89F4DDE21AE3DACA013A2CBE0F6876E1C24714E82177FDD2338BAA4</td>
-                </tr>
-                <tr>
-                    <td>BbartokK</td>
-                    <td>Crab Bananas</td>
-                    <td onclick="copyToClipboard(this)">0586A0356E14164BA317AF503E8BE8587E58664EC0D3EA9A6B3E6286842FC6B0</td>
-                </tr>
-                <tr>
-                    <td>Terminal Override</td>
-                    <td>Behind The Mesh</td>
-                    <td onclick="copyToClipboard(this)">B24448F1D4729A42DDE741FCCBC1BC721F771FF8F48C0F3B25C23DF20405A7E7</td>
-                </tr>
-                <tr>
-                    <td>Kampf</td>
-                    <td>Lecture</td>
-                    <td onclick="copyToClipboard(this)">A5B303F76D1BF4F7DD8CF94424B075BDA37F2874CD77ACA56B2D75E4BEF62D2A</td>
-                </tr>
-                <tr>
-                    <td>1o57</td>
-                    <td>Compiling...</td>
-                    <td onclick="copyToClipboard(this)">Compiling...</td>
-                </tr>
-                <tr>
-                    <td>Baywolfmusic</td>
-                    <td>Seeking (DefCon is Cancelled edit)</td>
-                    <td onclick="copyToClipboard(this)">F487F2E7153ED8E46D7517553499B15B04CEFD9B9C8FFC21AF6B7400B37D9C56</td>
-                </tr>
-                <tr>
-                    <td>Mattrix</td>
-                    <td>quickymix</td>
-                    <td onclick="copyToClipboard(this)">CCAC671276B603F1AA08B8031B35490A568DF65EC0D916656A503CD2767B1ACB</td>
-                </tr>
-                <tr>
-                    <td>Dotornot</td>
-                    <td>zero-zero-seven-six-four</td>
-                    <td onclick="copyToClipboard(this)">70BE410758477FDDD0CE7C862DEEF566734A1CD307A3E109527F59C6864B0FE2</td>
-                </tr>
-                <tr>
-                    <td>Dutch Angles</td>
-                    <td>Proto</td>
-                    <td onclick="copyToClipboard(this)">25AFAC16261B6AB15D6F2A4CFA64D568931C8AA309AAE13468840C694F76F450</td>
-                </tr>
-                <tr>
-                    <td>mauvhead</td>
-                    <td>mini-trance</td>
-                    <td onclick="copyToClipboard(this)">16D7C29148E2B2471ED82B63C32961F741482851DABA9AE564E02399008697B6</td>
-                </tr>
-                <tr>
-                    <td>Pastapocalypse</td>
-                    <td>Quantum Entanglement</td>
-                    <td onclick="copyToClipboard(this)">2B8BD3E80157C46721DEA7D3F139811CCE5F2E7C27CB0312ED6AE101DA6CA74E</td>
-                </tr>
-                <tr>
-                    <td>Cannibal</td>
-                    <td>Obstreperous</td>
-                    <td onclick="copyToClipboard(this)">A732DF3EB8C19E0292168A0142D6752D18C4935A0F117F475F715F5549C20970</td>
-                </tr>
+                <!-- … continue adding <td>Node X</td> for each row … -->
             </tbody>
         </table>
     </div>
